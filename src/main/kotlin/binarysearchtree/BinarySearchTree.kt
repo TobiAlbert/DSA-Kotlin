@@ -9,6 +9,10 @@ class BinarySearchTree<T>() where T: Comparable<T> {
         this.root = BstNode(value = root)
     }
 
+    constructor(values: List<T>): this() {
+        values.forEach(::insert)
+    }
+
     fun insert(value: T) {
         val node = BstNode(value = value)
         val currentRoot = root

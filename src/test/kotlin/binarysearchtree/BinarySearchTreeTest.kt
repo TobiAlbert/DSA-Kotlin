@@ -28,6 +28,39 @@ class BinarySearchTreeTest {
     }
 
     @Test
+    fun `can create tree from list of values`() {
+        val values = listOf(9, 4, 20, 1, 6, 15, 170)
+
+        val localBst = BinarySearchTree(values = values)
+
+        val expected =
+            BstNode(
+                value = 9,
+                left = BstNode(
+                    value = 4,
+                    left = BstNode(
+                        value = 1
+                    ),
+                    right = BstNode(
+                        value = 6
+                    )
+                ),
+                right = BstNode(
+                    value = 20,
+                    left = BstNode(
+                        value = 15
+                    ),
+                    right = BstNode(
+                        value = 170
+                    )
+                )
+            )
+
+        val actual = localBst.root
+        assertEquals(expected, actual)
+    }
+
+    @Test
     fun `can update null root node when insert`() {
         val value = 2
         bst.insert(value)
@@ -71,7 +104,7 @@ class BinarySearchTreeTest {
 
     @Test
     fun `can insert into children of root node`() {
-        listOf(
+        val values = listOf(
             9, // root value
             4, // root left
             20, // root right
@@ -79,14 +112,16 @@ class BinarySearchTreeTest {
             6, // right of left child
             15, // left of right child
             170 // right of right child
-        ).forEach(bst::insert)
+        )
+
+        val localBst = BinarySearchTree(values = values)
 
         val llc = BstNode(value = 1)
         val rlc = BstNode(value = 6)
         val lrc = BstNode(value = 15)
         val rrc = BstNode(value = 170)
 
-        val root = bst.root
+        val root = localBst.root
         val leftChild = root?.left
         val rightChild = root?.right
 
@@ -117,7 +152,7 @@ class BinarySearchTreeTest {
 //          4       20
 //        1   6   16  170
 
-        listOf(
+        val values = listOf(
             9, // root value
             4, // root left
             20, // root right
@@ -125,9 +160,11 @@ class BinarySearchTreeTest {
             6, // right of left child
             15, // left of right child
             170 // right of right child
-        ).forEach(bst::insert)
+        )
 
-        assertNotNull(bst.lookup(value))
+        val localBst = BinarySearchTree(values = values)
+
+        assertNotNull(localBst.lookup(value))
     }
 
     @Test
@@ -136,7 +173,7 @@ class BinarySearchTreeTest {
 //          4       20
 //        1   6   16  170
 
-        listOf(
+        val values = listOf(
             9, // root value
             4, // root left
             20, // root right
@@ -144,10 +181,12 @@ class BinarySearchTreeTest {
             6, // right of left child
             15, // left of right child
             170 // right of right child
-        ).forEach(bst::insert)
+        )
+
+        val localBst = BinarySearchTree(values = values)
 
         val lookupValue = 171
-        assertNull(bst.lookup(lookupValue))
+        assertNull(localBst.lookup(lookupValue))
     }
 
     @Test
@@ -181,7 +220,7 @@ class BinarySearchTreeTest {
     @Test
     fun `can delete root with two children`() {
         val root = 50
-        listOf(
+        val values = listOf(
             root,
             30,
             70,
@@ -189,9 +228,11 @@ class BinarySearchTreeTest {
             40,
             60,
             80
-        ).forEach(bst::insert)
+        )
 
-        bst.delete(root)
+        val localBst = BinarySearchTree(values = values)
+
+        localBst.delete(root)
 
         val expected =
             BstNode(
@@ -211,7 +252,7 @@ class BinarySearchTreeTest {
                 right = BstNode(value = 80)
             )
 
-        assertEquals(expected, bst.root)
+        assertEquals(expected, localBst.root)
 
     }
 
@@ -221,7 +262,7 @@ class BinarySearchTreeTest {
         //      50
         //  30      70
         // 20  40 60  80
-        listOf(
+        val values = listOf(
             50,
             30,
             70,
@@ -229,33 +270,37 @@ class BinarySearchTreeTest {
             40,
             leafNode,
             80
-        ).forEach(bst::insert)
+        )
 
-        bst.delete(leafNode)
+        val localBst = BinarySearchTree(values = values)
 
-        assertNull(bst.lookup(leafNode))
+        localBst.delete(leafNode)
+
+        assertNull(localBst.lookup(leafNode))
     }
 
     @Test
     fun `can delete node that has only one child`() {
         val value = 30
         val replacementValue = 40
-        listOf(
+        val values = listOf(
             50,
             value,
             70,
             replacementValue,
             60,
             80
-        ).forEach(bst::insert)
+        )
 
-        bst.delete(value)
+        val localBst = BinarySearchTree(values = values)
 
-        assertNull(bst.lookup(value))
+        localBst.delete(value)
+
+        assertNull(localBst.lookup(value))
 
         val expected = BstNode(value = replacementValue)
 
-        assertEquals(expected, bst.lookup(replacementValue))
+        assertEquals(expected, localBst.lookup(replacementValue))
     }
 
 
