@@ -82,4 +82,17 @@ class MyQueueTest {
 
         assertEquals(expected, queue.first)
     }
+
+    @Test
+    fun `peek returns null when queue contains no elements`() {
+        assertNull(queue.peek())
+    }
+
+    @Test
+    fun `peek returns value when queue is contains elements`() {
+        val element = 5
+        queue.enqueue(element)
+
+        assertEquals(element, queue.peek())
+    }
 }
