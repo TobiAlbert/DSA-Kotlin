@@ -23,6 +23,11 @@ class MyQueue<E>: QueueContract<E> {
             return
         }
 
+        if (length == 1) {
+            first = null
+            last = null
+        }
+
         length--
     }
 
