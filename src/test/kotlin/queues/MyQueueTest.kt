@@ -22,4 +22,14 @@ class MyQueueTest {
     fun `queue initialized with no elements has last node set to null`() {
         assertNull(queue.last)
     }
+
+    @Test
+    fun `queue length is incremented when element is enqueued`() {
+        val element = 5
+        queue.enqueue(element)
+
+        val expectedLength = 1
+
+        assertEquals(expectedLength, queue.length)
+    }
 }
