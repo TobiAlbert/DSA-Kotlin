@@ -1,5 +1,6 @@
 package queues
 
+import common.Node
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -31,5 +32,15 @@ class MyQueueTest {
         val expectedLength = 1
 
         assertEquals(expectedLength, queue.length)
+    }
+
+    @Test
+    fun `queue first node is updated when first element is added to node`() {
+        val element = 5
+        queue.enqueue(element)
+
+        val expected = Node(value = element)
+
+        assertEquals(expected, queue.first)
     }
 }
