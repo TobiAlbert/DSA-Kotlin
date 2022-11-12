@@ -26,6 +26,7 @@ class MyQueue<E>: QueueContract<E> {
 
         if (first == null) {
             first = node
+            last = node
         }
         length++
     }
