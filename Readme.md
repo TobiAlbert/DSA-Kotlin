@@ -15,8 +15,8 @@ While I am not necessarily looking to recreate the perfect implementation of the
 - [x] HashTables
 - [x] Linked Lists
 - [x] Stacks
-- [ ] Binary Search Trees _(In progress)_
-- [ ] Queue
+- [x] Binary Search Trees
+- [ ] Queue _(In progress)_
 - [ ] Trees
 - [ ] Heaps
 - [ ] Linear and Binary Search
