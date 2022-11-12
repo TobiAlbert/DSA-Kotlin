@@ -27,7 +27,13 @@ class MyQueue<E>: QueueContract<E> {
         if (first == null) {
             first = node
             last = node
+            length++
+            return
         }
+
+        // point to the next node, and update the last node pointer
+        last?.next = node
+        last = node
         length++
     }
 }
