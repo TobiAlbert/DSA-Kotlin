@@ -106,4 +106,14 @@ class MyQueueTest {
 
         assertEquals(expected, queue.length)
     }
+
+    @Test
+    fun `calling dequeue on queue with no elements does nothing`() {
+        queue.dequeue()
+
+        val expectedLength = 0
+        assertEquals(expectedLength, queue.length)
+        assertNull(queue.first)
+        assertNull(queue.last)
+    }
 }
