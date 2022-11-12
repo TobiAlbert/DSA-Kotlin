@@ -303,5 +303,65 @@ class BinarySearchTreeTest {
         assertEquals(expected, localBst.lookup(replacementValue))
     }
 
+    @Test
+    fun `can delete from node with two children`() {
+        val keyToDelete = 3
+        val keys = listOf(8, keyToDelete, 10, 14, 1, 6, 4, 7)
+
+        val localBst = BinarySearchTree(keys)
+
+        localBst.delete(keyToDelete)
+
+        val expected = BstNode(
+            value = 8,
+            left = BstNode(
+                value = 4,
+                left = BstNode(value = 1),
+                right = BstNode(
+                    value = 6,
+                    right = BstNode(value = 7)
+                )
+            ),
+            right = BstNode(
+                value = 10,
+                right = BstNode(value = 14)
+            )
+        )
+
+        assertEquals(expected, localBst.root)
+    }
+
+    @Test
+    fun `can delete from node with two children 2`() {
+        val keyToDelete = 51
+        val keys = listOf(60, 30, 72, 14, 1, keyToDelete, 38, 55, 44, 54)
+
+        val localBst = BinarySearchTree(keys)
+
+        localBst.delete(keyToDelete)
+
+        val expected = BstNode(
+            value = 60,
+            left = BstNode(
+                30,
+                left = BstNode(
+                    value = 14,
+                    left = BstNode(1)
+                ),
+                right = BstNode(
+                    value = 54,
+                    left = BstNode(
+                        value = 38,
+                        right = BstNode(value = 44)
+                    ),
+                    right = BstNode(value = 55)
+                )
+            ),
+            right = BstNode(value = 72)
+        )
+
+        assertEquals(expected, localBst.root)
+    }
+
 
 }
