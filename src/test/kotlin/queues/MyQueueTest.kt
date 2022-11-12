@@ -43,4 +43,14 @@ class MyQueueTest {
 
         assertEquals(expected, queue.first)
     }
+
+    @Test
+    fun `queue last node is updated when first element is added to queue`() {
+        val element = 5
+        queue.enqueue(element)
+
+        val expected = Node(value = element)
+
+        assertEquals(expected, queue.last)
+    }
 }
