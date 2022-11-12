@@ -16,6 +16,13 @@ class MyQueue<E>: QueueContract<E> {
     override fun peek(): E? = first?.value
 
     override fun dequeue() {
+        val canDequeue =
+            first != null && last != null && length > 0
+
+        if (!canDequeue) {
+            return
+        }
+
         length--
     }
 
