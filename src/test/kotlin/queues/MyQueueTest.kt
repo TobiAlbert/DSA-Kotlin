@@ -95,4 +95,15 @@ class MyQueueTest {
 
         assertEquals(element, queue.peek())
     }
+
+    @Test
+    fun `dequeue decrements queue length`() {
+        val elements = listOf(1, 3)
+        elements.forEach(queue::enqueue)
+
+        queue.dequeue()
+        val expected = elements.size - 1
+
+        assertEquals(expected, queue.length)
+    }
 }
