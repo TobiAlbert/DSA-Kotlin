@@ -22,6 +22,11 @@ class MyQueue<E>: QueueContract<E> {
     }
 
     override fun enqueue(element: E) {
+        val node = Node(value = element)
+
+        if (first == null) {
+            first = node
+        }
         length++
     }
 }
