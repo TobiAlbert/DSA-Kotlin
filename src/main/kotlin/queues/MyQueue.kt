@@ -16,7 +16,7 @@ class MyQueue<E>: QueueContract<E> {
     override fun peek(): E? = first?.value
 
     override fun dequeue() {
-        TODO("Not yet implemented")
+        length--
     }
 
     override fun enqueue(element: E) {
