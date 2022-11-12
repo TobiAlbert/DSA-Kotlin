@@ -22,6 +22,6 @@ class MyQueue<E>: QueueContract<E> {
     }
 
     override fun enqueue(element: E) {
-        TODO("Not yet implemented")
+        length++
     }
 }
