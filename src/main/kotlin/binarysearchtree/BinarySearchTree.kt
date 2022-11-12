@@ -146,7 +146,42 @@ class BinarySearchTree<T>() where T: Comparable<T> {
         }
 
         // at this point, it means the node has two children
+        val successorNode = getInOrderSuccessorForNonLeafNode(currentNode) ?: return
 
+        // copy the value of the successor node into the current node
+        currentNode.value = successorNode.value
+    }
+
+    private fun getInOrderSuccessorForNonLeafNode(node: BstNode<T>): BstNode<T>? {
+        // return null for leaf node
+        if (node.left == null && node.right == null) {
+            return null
+        }
+
+        // to get the successor node (which is the smallest value that is greater than the value to be removed)
+        // take one right and multiple left turns
+        val rightChild = node.right ?: return null
+
+        var previousNode: BstNode<T>? = null
+        var currentNode: BstNode<T>? = rightChild
+
+        var value: T? = null
+
+        while(currentNode != null) {
+            val leftChild = currentNode.left
+
+            if (leftChild == null) {
+                // get the value of the current node
+                value = currentNode.value
+                // delete the successor node from its parent
+                previousNode?.left = null
+            }
+
+            previousNode = currentNode
+            currentNode = currentNode.left
+        }
+
+        return if (value == null) return null else BstNode(value = value)
     }
 
     private fun deleteLeafNode(leafNode: BstNode<T>, parentNode: BstNode<T>) {
