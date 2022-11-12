@@ -13,9 +13,7 @@ class MyQueue<E>: QueueContract<E> {
     var length = 0
         private set
 
-    override fun peek(): E? {
-        TODO("Not yet implemented")
-    }
+    override fun peek(): E? = first?.value
 
     override fun dequeue() {
         TODO("Not yet implemented")
