@@ -116,4 +116,15 @@ class MyQueueTest {
         assertNull(queue.first)
         assertNull(queue.last)
     }
+
+    @Test
+    fun `calling dequeue on queue with one element updates first and last nodes to null`() {
+        val element = 6
+        queue.enqueue(element)
+
+        queue.dequeue()
+
+        assertNull(queue.first)
+        assertNull(queue.last)
+    }
 }
