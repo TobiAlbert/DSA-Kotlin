@@ -173,8 +173,9 @@ class BinarySearchTree<T>() where T: Comparable<T> {
             if (leftChild == null) {
                 // get the value of the current node
                 value = currentNode.value
-                // delete the successor node from its parent
-                previousNode?.left = null
+                // as the successor node would have no left, node
+                // assign the nodes in the successor node to its parent (if present)
+                previousNode?.left = currentNode.right
             }
 
             previousNode = currentNode
