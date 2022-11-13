@@ -2,7 +2,7 @@ package queues
 
 import common.Node
 
-class MyQueue<E>: QueueContract<E> {
+class MyQueue<E>(): QueueContract<E> {
 
     var first: Node<E>? = null
         private set
@@ -12,6 +12,10 @@ class MyQueue<E>: QueueContract<E> {
 
     var length = 0
         private set
+
+    constructor(elements: List<E>): this() {
+        elements.forEach(::enqueue)
+    }
 
     override fun peek(): E? = first?.value
 
