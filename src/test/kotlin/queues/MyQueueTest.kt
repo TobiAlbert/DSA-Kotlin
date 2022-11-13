@@ -1,7 +1,8 @@
 package queues
 
 import common.Node
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 
@@ -167,5 +168,44 @@ class MyQueueTest {
         val expected = Node(value = -7)
 
         assertEquals(expected, queue.last)
+    }
+
+    @Test
+    fun `initialize queue with list of elements`() {
+        val elements = listOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+
+        val localQueue = MyQueue(elements)
+
+        val expected = elements.size
+
+        assertEquals(expected, localQueue.length)
+    }
+
+    @Test
+    fun `initializing queue with more than 1 element updates first node`() {
+        val elements = listOf(1, 2, 3)
+
+        val localQueue = MyQueue(elements)
+
+        val expected = Node(
+            value = 1,
+            next = Node(
+                value = 2,
+                next = Node(value = 3)
+            )
+        )
+
+        assertEquals(expected, localQueue.first)
+    }
+
+    @Test
+    fun `initializing queue with more than 1 element updates last node`() {
+        val elements = listOf(1, 2, 3)
+
+        val localQueue = MyQueue(elements)
+
+        val expected = Node(value = 3)
+
+        assertEquals(expected, localQueue.last)
     }
 }
