@@ -26,6 +26,28 @@ class MyQueue<E>: QueueContract<E> {
         if (length == 1) {
             first = null
             last = null
+            length--
+            return
+        }
+
+        // at this point, we're dealing with 2 or more elements in queue
+        var currentNode: Node<E>? = first
+        var previousNode: Node<E>? = null
+
+        while(currentNode != null) {
+            val nextNode: Node<E>? = currentNode.next
+
+            if (nextNode == null) {
+                // point the previous node's next node to null,
+                // effectively removing the last node from the queue
+                previousNode?.next = null
+
+                // update the last node
+                last = previousNode
+                break
+            }
+            previousNode = currentNode
+            currentNode = nextNode
         }
 
         length--
