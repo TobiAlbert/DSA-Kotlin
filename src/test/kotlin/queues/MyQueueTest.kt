@@ -148,10 +148,10 @@ class MyQueueTest {
         queue.dequeue()
 
         val expected = Node(
-            value = 1,
+            value = 5,
             next = Node(
-                value = 5,
-                next = Node(value = -7)
+                value = -7,
+                next = Node(value = 3)
             )
         )
 
@@ -159,13 +159,13 @@ class MyQueueTest {
     }
 
     @Test
-    fun `calling dequeue on queue with more than one element updates last node`() {
+    fun `calling dequeue (once) on queue with more than one element does not update last node`() {
         val elements = listOf(1, 5, -7, 3)
         elements.forEach(queue::enqueue)
 
         queue.dequeue()
 
-        val expected = Node(value = -7)
+        val expected = Node(value = 3)
 
         assertEquals(expected, queue.last)
     }
