@@ -127,4 +127,45 @@ class MyQueueTest {
         assertNull(queue.first)
         assertNull(queue.last)
     }
+
+    @Test
+    fun `calling dequeue on queue with one element updates length to zero`() {
+        val element = 6
+        queue.enqueue(element)
+
+        queue.dequeue()
+
+        val expectedLength = 0
+        assertEquals(expectedLength, queue.length)
+    }
+
+    @Test
+    fun `calling dequeue on queue with more than one element updates first node`() {
+        val elements = listOf(1, 5, -7, 3)
+        elements.forEach(queue::enqueue)
+
+        queue.dequeue()
+
+        val expected = Node(
+            value = 1,
+            next = Node(
+                value = 5,
+                next = Node(value = -7)
+            )
+        )
+
+        assertEquals(expected, queue.first)
+    }
+
+    @Test
+    fun `calling dequeue on queue with more than one element updates last node`() {
+        val elements = listOf(1, 5, -7, 3)
+        elements.forEach(queue::enqueue)
+
+        queue.dequeue()
+
+        val expected = Node(value = -7)
+
+        assertEquals(expected, queue.last)
+    }
 }
