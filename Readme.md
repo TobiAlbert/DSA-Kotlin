@@ -14,9 +14,16 @@ While I am not necessarily looking to recreate the perfect implementation of the
 - [x] Arrays
 - [x] HashTables
 - [x] Linked Lists
+  - [x] Singly LinkedList
+  - [x] Doubly LinkedList
 - [x] Stacks
+  - [x] Backed by an Array
+  - [x] Backed by a LinkedList
 - [x] Binary Search Trees
-- [ ] Queue _(In progress)_
+- [ ] Queues _(In progress)_
+  - [x] Backed by a LinkedList
+  - [ ] Backed by a Stack
+  - [ ] Circular Queues
 - [ ] Trees
 - [ ] Heaps
 - [ ] Linear and Binary Search
@@ -28,6 +35,7 @@ While I am not necessarily looking to recreate the perfect implementation of the
 - [Master the Coding Interview: Data Structures & Algorithms](https://www.udemy.com/course/master-the-coding-interview-data-structures-algorithms/) Udemy Course
 - [Programiz](https://www.programiz.com/dsa)
 - [Geeks for Geeks](https://www.geeksforgeeks.org/)
+- [Visualgo](https://visualgo.net/en)
 
 ### Suggestions & Contributions 💪🏾
 I'm always open to feedback. If you have any suggestions, corrections or ways this project could be improved, feel free to open an issue or raise a PR.
