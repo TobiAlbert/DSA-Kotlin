@@ -22,7 +22,7 @@ While I am not necessarily looking to recreate the perfect implementation of the
 - [x] Binary Search Trees
 - [ ] Queues _(In progress)_
   - [x] Backed by a LinkedList
-  - [ ] Backed by a Stack
+  - [x] Backed by a Stack
   - [ ] Circular Queues
 - [ ] Trees
 - [ ] Heaps
