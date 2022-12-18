@@ -24,6 +24,8 @@ While I am not necessarily looking to recreate the perfect implementation of the
   - [x] Backed by a LinkedList
   - [x] Backed by a Stack
   - [ ] Circular Queues
+- [x] Graphs
+  - [x] Unidirectional Graph
 - [ ] Trees
 - [ ] Heaps
 - [ ] Linear and Binary Search
