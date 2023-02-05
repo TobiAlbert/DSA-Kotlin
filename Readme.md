@@ -19,17 +19,17 @@ While I am not necessarily looking to recreate the perfect implementation of the
 - [x] Stacks
   - [x] Backed by an Array
   - [x] Backed by a LinkedList
-- [x] Binary Search Trees
 - [ ] Queues _(In progress)_
   - [x] Backed by a LinkedList
   - [x] Backed by a Stack
   - [ ] Circular Queues
 - [x] Graphs
   - [x] Unidirectional Graph
+- [x] Heaps
+  - [ ] Heapsort
 - [ ] Trees
-- [ ] Heaps
+  - [x] Binary Search Trees
 - [ ] Linear and Binary Search
-- [ ] Heapsort
 - [ ] Breath-First & Depth-First Search
 
 ## Resources 📓
