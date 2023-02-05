@@ -8,6 +8,10 @@ class MaxHeap<T : Comparable<T>> constructor(vararg elements: T) : HeapContract<
     val data: List<T>
         get() = list.filterNotNull()
 
+    init {
+        elements.forEach(::insert)
+    }
+
     override fun insert(value: T) {
         if (list.isEmpty()) {
             list.add(null)

@@ -22,6 +22,16 @@ class MinHeapTest {
     }
 
     @Test
+    fun `can initialize heap with values`() {
+        val localHeap = MinHeap(4, 5, 8, 10, 6, 16)
+
+        val expected = listOf(4, 5, 8, 10, 6, 16)
+        val actual = localHeap.data
+
+        assertEquals(expected, actual)
+    }
+
+    @Test
     fun `can add root element to heap`() {
         val element = 1
         heap.insert(element)

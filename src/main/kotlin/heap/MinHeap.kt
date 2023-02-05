@@ -8,6 +8,10 @@ class MinHeap<T: Comparable<T>> constructor(vararg elements: T): HeapContract<T>
     val data: List<T>
         get() = list.filterNotNull()
 
+    init {
+        elements.forEach(::insert)
+    }
+
     override fun insert(value: T) {
         if (list.isEmpty()) {
             list.add(null)

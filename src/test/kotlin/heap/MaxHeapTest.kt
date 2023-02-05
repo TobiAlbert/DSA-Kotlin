@@ -25,6 +25,16 @@ class MaxHeapTest {
     }
 
     @Test
+    fun `can initialize heap with values`() {
+        val localHeap = MaxHeap(20, 19, 17, 13, 15, 8, 5)
+
+        val expected = listOf(20, 19, 17, 13, 15, 8, 5)
+        val actual = localHeap.data
+
+        assertEquals(expected, actual)
+    }
+
+    @Test
     fun `can add two child elements to root element`() {
         val element = 10
         heap.insert(element)
