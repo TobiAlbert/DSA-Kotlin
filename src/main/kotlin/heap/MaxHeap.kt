@@ -4,22 +4,13 @@ import kotlin.math.floor
 
 class MaxHeap<T : Comparable<T>> constructor(vararg elements: T) : HeapContract<T> {
 
-    private val list: MutableList<T> = mutableListOf()
+    private val list: MutableList<T?> = mutableListOf()
     val data: List<T>
-        get() {
-            if (list.isEmpty()) {
-                return emptyList()
-            }
-            return list.subList(1, list.size)
-        }
+        get() = list.filterNotNull()
 
     override fun insert(value: T) {
         if (list.isEmpty()) {
-            // Not sure if it's possible to have a default value
-            // when using non-null generics. So in order to keep
-            // the first index "empty", we write the first element
-            // inserted twice
-            list.add(value)
+            list.add(null)
             list.add(value)
             return
         }
@@ -33,12 +24,12 @@ class MaxHeap<T : Comparable<T>> constructor(vararg elements: T) : HeapContract<
         // make sure it is in the proper position relative to it's parent
         var childIndex = list.lastIndex
         while (childIndex > 1) {
-            val childElement = list[childIndex]
+            val childElement = list[childIndex]!!
 
             val parentIndex = floor((childIndex / 2).toDouble()).toInt()
             val parentElement = list[parentIndex]
 
-            if (childElement > parentElement) {
+            if (childElement > parentElement!!) {
                 list[parentIndex] = childElement
                 list[childIndex] = parentElement
                 childIndex = parentIndex
@@ -67,16 +58,16 @@ class MaxHeap<T : Comparable<T>> constructor(vararg elements: T) : HeapContract<
     }
 
     private fun reorderFromFrontIfNecessary() {
-        // *, 3, 5, 7, 2
+        // null, 3, 5, 7, 2
         var parentIndex = 1
         while (parentIndex.rightChildIndex <= list.lastIndex) {
-            val parentElement = list[parentIndex]
+            val parentElement = list[parentIndex]!!
 
             val leftChildIndex = parentIndex.leftChildIndex
-            val leftChildElement = list[leftChildIndex]
+            val leftChildElement = list[leftChildIndex]!!
 
             val rightChildIndex = parentIndex.rightChildIndex
-            val rightChildElement = list[rightChildIndex]
+            val rightChildElement = list[rightChildIndex]!!
 
             if (leftChildElement > rightChildElement) {
                 if (parentElement < leftChildElement) {

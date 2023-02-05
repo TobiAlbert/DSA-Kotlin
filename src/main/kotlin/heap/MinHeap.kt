@@ -4,18 +4,13 @@ import kotlin.math.floor
 
 class MinHeap<T: Comparable<T>> constructor(vararg elements: T): HeapContract<T> {
 
-    private val list: MutableList<T> = mutableListOf()
+    private val list: MutableList<T?> = mutableListOf()
     val data: List<T>
-        get() {
-            if (list.isEmpty()) {
-                return emptyList()
-            }
-            return list.subList(1, list.size)
-        }
+        get() = list.filterNotNull()
 
     override fun insert(value: T) {
         if (list.isEmpty()) {
-            list.add(value)
+            list.add(null)
             list.add(value)
             return
         }
@@ -29,10 +24,10 @@ class MinHeap<T: Comparable<T>> constructor(vararg elements: T): HeapContract<T>
         // make sure it is in the proper position relative to it's parent
         var childIndex = list.lastIndex
         while (childIndex > 1) {
-            val childElement = list[childIndex]
+            val childElement = list[childIndex]!!
 
             val parentIndex = floor((childIndex / 2).toDouble()).toInt()
-            val parentElement = list[parentIndex]
+            val parentElement = list[parentIndex]!!
 
             if (childElement < parentElement) {
                 list[parentIndex] = childElement
@@ -69,13 +64,13 @@ class MinHeap<T: Comparable<T>> constructor(vararg elements: T): HeapContract<T>
         // 1, 10, 3, 4, 5, 6, 16, 8
         var parentIndex = 1
         while (parentIndex.rightChildIndex <= list.lastIndex) {
-            val parentElement = list[parentIndex]
+            val parentElement = list[parentIndex]!!
 
             val leftChildIndex = parentIndex.leftChildIndex
-            val leftChildElement = list[leftChildIndex]
+            val leftChildElement = list[leftChildIndex]!!
 
             val rightChildIndex = parentIndex.rightChildIndex
-            val rightChildElement = list[rightChildIndex]
+            val rightChildElement = list[rightChildIndex]!!
 
             if (leftChildElement < rightChildElement) {
                 if (parentElement > leftChildElement) {
